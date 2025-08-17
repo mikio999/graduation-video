@@ -1,0 +1,142 @@
+/* src/index.css */
+:root {
+  color-scheme: light dark;
+  --caption-bg: rgba(0, 0, 0, 0.55);
+  --caption-text: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+  background: #0b0c0f;
+  color: #e8eaed;
+}
+
+/* 레이아웃 헬퍼 */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* 카드 느낌 */
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* 폼 */
+.form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  outline: none;
+}
+
+.button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #6e8aff;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hint {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* 비디오 래퍼 */
+.video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 실제 비디오 */
+.video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 자막 (공통) */
+.caption {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 900px;
+  padding: 12px 16px;
+  text-align: center;
+
+  background: var(--caption-bg, rgba(0,0,0,.55));
+  color: var(--caption-text, #fff);
+  border-radius: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* 자막 애니메이션 */
+@keyframes pulse {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 1; }
+}
+
+/* 풀스크린 재생 오버레이 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+}
+
+/* 풀스크린 모드에서 사용할 래퍼 */
+.overlay .video-wrap {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  border-radius: 0; /* 전체화면에서는 모서리 둥근 거 제거 */
+}
+
+/* 풀스크린 모드 비디오 */
+.overlay .video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
