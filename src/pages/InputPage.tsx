@@ -24,7 +24,7 @@ export default function InputPage() {
 
   return (
     <div className="container">
-      <h1>🎉 코드잇 스프린트 수료를 축하드립니다</h1>
+      <h1>🎉 잠시 후 놀라운 순간이 공개됩니다</h1>
       <p className="hint">당신의 이름은?</p>
 
       <form className="form card" onSubmit={onSubmit}>
